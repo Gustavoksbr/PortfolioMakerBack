@@ -1,21 +1,23 @@
 # 📌 PortfolioMakerBack
 
-API em **Spring Boot** para gerenciamento de portfólios, utilizando **MongoDB**, autenticação via **JWT (RSA)** e documentação com **Swagger**.
+API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **MongoDB** como banco de dados, autenticação via **JWT (RSA)** e documentação interativa através do **Swagger**.
 
-Cada usuário pode ter no máximo **um portfólio**, que inclui informações como descrição, habilidades, projetos, experiências e links.
+Cada usuário pode criar **um único portfólio**, contendo informações como descrição, habilidades, projetos, experiências e links.
 
 ---
 
 ## 🔨 Pré-requisitos
 
+Antes de rodar o projeto, instale os seguintes componentes:
+
 - [Java 17+](https://adoptium.net/)
 - [MongoDB](https://www.mongodb.com/try/download/community) rodando em `localhost:27017`
 - [Git](https://git-scm.com/)
-- [Git Bash](https://gitforwindows.org/) (para gerar as chaves no Windows)
+- [Git Bash](https://gitforwindows.org/) (necessário para gerar chaves no Windows)
 
 ---
 
-## 📂 Clonar o projeto
+## 📂 Clonando o projeto
 
 ```bash
 git clone https://github.com/Gustavoksbr/PortfolioMakerBack.git
@@ -24,15 +26,13 @@ cd PortfolioMakerBack
 
 ---
 
+## 🔑 Configuração de chaves JWT
 
-## 🔑 Configuração das chaves JWT
+A autenticação utiliza **chaves RSA** que **não estão versionadas** por motivos de segurança.
 
-O projeto utiliza autenticação com chaves **RSA**.  
-As chaves **não estão versionadas** por segurança.
+### Gerando as chaves
 
-### Gerar as chaves
-
-Abra o **Git Bash** na raiz do projeto e execute:
+Na raiz do projeto, execute no **Git Bash**:
 
 ```bash
 # Gera a chave privada (2048 bits)
@@ -48,24 +48,27 @@ Isso criará os arquivos:
 - `src/main/resources/app.key.pub` → chave pública
 
 ---
-## ⚙️ Proprerties
 
-Abra o arquivo `src/main/resources/application.properties`. Você pode escolher entre definir as variáveis diretamente nesse arquivo substituindo os valores `${VARIAVEL}` pelas suas configurações, ou criar um arquivo `.env` na raiz do projeto (recomendado).
+## ⚙️ Configuração do `application.properties`
 
-Em `spring.data.mongodb.database` escolha o nome banco de dados que você criou no MongoDB (o padrão é `portfoliomaker`).
+O arquivo `src/main/resources/application.properties` deve ser configurado com as variáveis necessárias.
+
+Você pode:
+1. Definir as variáveis diretamente no `application.properties`, ou
+2. Criar um arquivo `.env` na raiz do projeto (recomendado).
+
+Exemplo de configuração:
 
 ````properties
 spring.application.name=portfoliomaker
 
 spring.data.mongodb.uri=${PORTFOLIO_MONGODB_URI}
-
 spring.data.mongodb.database=portfoliomaker
 
 jwt.private.key=classpath:app.key.priv
 jwt.public.key=classpath:app.key.pub
 
 server.port=8080
-
 server.error.include-stacktrace=never
 
 spring.mail.properties.mail.smtp.auth=true
@@ -73,62 +76,68 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 
 spring.mail.host=${PORTFOLIO_EMAIL_HOST}
 spring.mail.port=${PORTFOLIO_EMAIL_PORT}
-
-spring.mail.username=${PORTFOLIO_EMAIL}
-spring.mail.password=${PORTFOLIO_EMAIL_PASSWORD}
-
-````
-
-
-A seguir, configure as últimas quatro variáveis de acordo com o serviço de e-mail que for utilizar (Gmail, Outlook, etc).
-
----
-## 📧 Configuração de e-mail
-
-O sistema envia e-mails para recuperação de senha. Este vídeo mostra um passo a passo de como configurar isso no Gmail: https://youtu.be/_MwdIaMy_Ao?si=_O3NVEdCDNSwwh1u
-
-Com isso é possível preencher essas variáveis no `application.properties`:
-````properties
-spring.mail.host=${PORTFOLIO_EMAIL_HOST}
-spring.mail.port=${PORTFOLIO_EMAIL_PORT}
-
 spring.mail.username=${PORTFOLIO_EMAIL}
 spring.mail.password=${PORTFOLIO_EMAIL_PASSWORD}
 ````
 
+👉 Para conexão local com o MongoDB, defina:
+```
+PORTFOLIO_MONGODB_URI=mongodb://localhost:27017
+```
+
 ---
 
-## ▶️ Rodando o projeto
+## 📧 Configuração de envio de e-mails
+
+O sistema envia e-mails para **recuperação de senha**.
+
+Exemplo de configuração no `.env`:
+````env
+PORTFOLIO_MONGODB_URI=mongodb://localhost:27017
+PORTFOLIO_EMAIL_HOST=smtp.gmail.com
+PORTFOLIO_EMAIL_PORT=587
+PORTFOLIO_EMAIL=seu-email@gmail.com
+PORTFOLIO_EMAIL_PASSWORD=sua-senha-ou-app-password
+````
+
+🔗 Guia rápido para configurar no Gmail: https://youtu.be/_MwdIaMy_Ao?si=_O3NVEdCDNSwwh1u
+
+---
+
+## ▶️ Executando o projeto
 
 Na raiz do projeto, rode:
 
-Caso esteja usando um arquivo `.env`, rode o comando abaixo para carregar as variáveis:
+Se estiver usando **.env**:
 ```bash
 ./gradlew bootRun --args='--spring.config.import=optional:file:.env[.properties]'
 ```
-Ou, se variáveis estiverem diretamente definidas no `application.properties`, rode:
 
+Ou, se as variáveis estiverem no `application.properties`:
 ```bash
 ./gradlew bootRun
 ```
 
-Isso vai iniciar o servidor.
+O servidor será iniciado em: [http://localhost:8080](http://localhost:8080)
 
 ---
 
 ## 📜 Documentação da API
 
-Após iniciar, acesse o Swagger:
+Após iniciar a aplicação, acesse a documentação no Swagger:
 
 👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
-## ⚠️ Importante
 
-> Nunca suba suas chaves e o .env para o repositório.  
+## ⚠️ Boas práticas de segurança
+
+> 🚫 **Nunca** versione suas chaves ou o arquivo `.env`.
+>
 > Adicione ao `.gitignore`:
 > ```
 > *.key.priv
 > *.key.pub
 > *.env
 > ```
+
