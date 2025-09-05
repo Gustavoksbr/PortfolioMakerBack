@@ -1,8 +1,12 @@
 # 📌 PortfolioMakerBack
 
-API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **MongoDB** como banco de dados, autenticação via **JWT (RSA)** e documentação interativa através do **Swagger**.
+API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **MongoDB** como banco de dados e autenticação via **JWT (RSA)**
 
 Cada usuário pode criar **um único portfólio**, contendo informações como descrição, habilidades, projetos, experiências e links.
+
+Veja a aplicação completa hospedada [aqui](https://gustavoksbr-portfolio-maker.vercel.app).
+
+Veja o código do Front-End [aqui](https://github.com/Gustavoksbr/PortfolioMakerFront)
 
 ---
 
