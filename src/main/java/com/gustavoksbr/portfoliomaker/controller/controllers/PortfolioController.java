@@ -2,6 +2,7 @@ package com.gustavoksbr.portfoliomaker.controller.controllers;
 
 import com.gustavoksbr.portfoliomaker.controller.dtos.portfolio.PortfolioRequest;
 import com.gustavoksbr.portfoliomaker.domain.PortfolioManager;
+import com.gustavoksbr.portfoliomaker.domain.UsuarioManager;
 import com.gustavoksbr.portfoliomaker.domain.dtos.Portfolio;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,15 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/portfolio")
+@RequestMapping("/portfolios")
 public class PortfolioController {
     private final PortfolioManager portfolioManager;
+    private final UsuarioManager usuarioManager;
     @Autowired
-    public PortfolioController(PortfolioManager portfolioManager) {
+    public PortfolioController(PortfolioManager portfolioManager, UsuarioManager usuarioManager) {
+        this.usuarioManager = usuarioManager;
         this.portfolioManager = portfolioManager;
     }
     @PostMapping("/save")
-    public ResponseEntity<Portfolio> savePortfolio(@Valid @RequestBody PortfolioRequest portfolioRequest, HttpServletRequest httpServletRequest) throws IOException {
+    public ResponseEntity<Portfolio> savePortfolio(@Valid @RequestBody PortfolioRequest portfolioRequest, HttpServletRequest httpServletRequest) {
         String email = httpServletRequest.getAttribute("email").toString();
         System.out.println("email: " + email);
         Portfolio portfolio = portfolioRequest.toDomain();
@@ -32,30 +35,27 @@ public class PortfolioController {
         this.portfolioManager.savePortfolio(portfolio);
         return ResponseEntity.ok(portfolio);
     }
-    @GetMapping("/get/username/{portfolioUsername}")
+    @GetMapping("/username/{portfolioUsername}")
     public ResponseEntity<Portfolio> getPortfolioByUsername(@PathVariable String portfolioUsername) {
+
         Portfolio portfolio = this.portfolioManager.buscarPorUsername(portfolioUsername);
         if (portfolio == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(portfolio);
     }
-    @DeleteMapping("/delete/username/{portfolioUsername}")
-    public ResponseEntity<Void> deletePortfolioByUsername(@PathVariable String portfolioUsername, HttpServletRequest httpServletRequest) {
-        Portfolio portfolio = this.portfolioManager.buscarPorUsername(portfolioUsername);
-        if (portfolio == null) {
-            return ResponseEntity.notFound().build();
-        }
-        this.portfolioManager.deletarPortfolio(portfolio.getUsername(), httpServletRequest.getAttribute("email").toString());
-        return ResponseEntity.ok().build();
-    }
-    @GetMapping("/get/email/{portfolioEmail}")
+
+    @GetMapping("/email/{portfolioEmail}")
     public ResponseEntity<Portfolio> getPortfolioByEmail(@PathVariable String portfolioEmail) {
-        Portfolio portfolio = this.portfolioManager.buscarPorEmail(portfolioEmail);
-        if (portfolio == null) {
-            return ResponseEntity.notFound().build();
+        if(usuarioManager.existePorEmail(portfolioEmail)) {
+            Portfolio portfolio = this.portfolioManager.buscarPorEmail(portfolioEmail);
+            if (portfolio == null) {
+                return ResponseEntity.noContent().build();
+            }
+
+            return ResponseEntity.ok(portfolio);
         }
-        return ResponseEntity.ok(portfolio);
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping()
@@ -75,4 +75,14 @@ public ResponseEntity<List<Portfolio>> getPortfoliosNoGustavoksbr() {
     }
     return ResponseEntity.ok(portfolios1);
 }
+
+//    @DeleteMapping("/username/{portfolioUsername}")
+//    public ResponseEntity<Void> deletePortfolioByUsername(@PathVariable String portfolioUsername, HttpServletRequest httpServletRequest) {
+//        Portfolio portfolio = this.portfolioManager.buscarPorUsername(portfolioUsername);
+//        if (portfolio == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        this.portfolioManager.deletarPortfolio(portfolio.getUsername(), httpServletRequest.getAttribute("email").toString());
+//        return ResponseEntity.ok().build();
+//    }
 }

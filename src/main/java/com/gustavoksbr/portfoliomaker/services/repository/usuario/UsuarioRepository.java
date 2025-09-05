@@ -34,5 +34,8 @@ public class UsuarioRepository {
         usuarioEntity.setSenha(usuario.getSenha());
         this.mongoUsuarioRepository.save(usuarioEntity);
     }
+    public Boolean existePorEmail(String email) {
+        return this.mongoUsuarioRepository.existsByEmail(email);
+    }
 
 }

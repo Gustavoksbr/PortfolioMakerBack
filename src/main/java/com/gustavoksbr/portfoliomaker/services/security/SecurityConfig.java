@@ -41,6 +41,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .anyRequest().permitAll());
+        /**
+         * Todas as requisições são permitidas sem autenticação pelo Spring Security para controlá-las manualmente aqui {@link com.gustavoksbr.portfoliomaker.controller.HttpConfig} com Interceptors.
+         */
         return http.build();
     }
 

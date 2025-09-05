@@ -43,4 +43,8 @@ public class UsuarioManager {
     public String capturarEmailDoToken(String token) {
         return this.authService.getEmail(token);
     }
+
+    public Boolean existePorEmail(String email) {
+        return this.usuarioRepository.existePorEmail(email);
+    }
 }
