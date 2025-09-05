@@ -4,7 +4,7 @@ API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **Mon
 
 Cada usuário pode criar **um único portfólio**, contendo informações como descrição, habilidades, projetos, experiências e links.
 
-Veja a aplicação completa hospedada [aqui](https://gustavoksbr-portfolio-maker.vercel.app)
+Veja a aplicação completa hospedada [aqui](https://gustavoksbr-portfolio-maker.vercel.app).
 
 Veja o código do Front-End [aqui](https://github.com/Gustavoksbr/PortfolioMakerFront)
 
@@ -82,18 +82,12 @@ spring.mail.host=${PORTFOLIO_EMAIL_HOST}
 spring.mail.port=${PORTFOLIO_EMAIL_PORT}
 spring.mail.username=${PORTFOLIO_EMAIL}
 spring.mail.password=${PORTFOLIO_EMAIL_PASSWORD}
-
-cors.allowed-origins=http://localhost:4200,https://gustavoksbr-portfolio-maker.vercel.app
 ````
 
 👉 Para conexão local com o MongoDB, defina:
 ```
 PORTFOLIO_MONGODB_URI=mongodb://localhost:27017
 ```
-
-Defina `spring.data.mongodb.database=` com o nome do seu banco de dados
-
-Caso rode um serviço que consuma esta API (Como o fro, ajuste `cors.allowed-origins=` com sua URL.
 
 ---
 
@@ -134,10 +128,7 @@ O servidor será iniciado em: [http://localhost:8080](http://localhost:8080)
 
 ## 📜 Documentação da API
 
-
-Acesse a documentação no Swagger:
-
-Após iniciar a aplicação, Acesse a documentação no Swagger:
+Após iniciar a aplicação, acesse a documentação no Swagger:
 
 👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
