@@ -106,6 +106,6 @@ O servidor será iniciado em: [http://localhost:8080](http://localhost:8080)
 
 ## 📜 Documentação da API
 
-👉 [https://portfoliomaker-elfz.onrender.com/swagger-ui/index.html](https://portfoliomaker-elfz.onrender.com/swagger-ui/index.html)
+👉 https://portfoliomakerback.onrender.com/swagger-ui/index.html
 
 ---
