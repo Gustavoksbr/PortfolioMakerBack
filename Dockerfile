@@ -1,14 +1,25 @@
-# Usa uma imagem base do OpenJDK 17
-FROM openjdk:17-jdk-slim
+# Etapa 1: Build da aplicação
+FROM gradle:7.6.2-jdk17 AS builder
 
-# Define o diretório de trabalho dentro do contêiner
+# Define diretório de trabalho
 WORKDIR /app
 
-# Copia o JAR gerado para o contêiner
-COPY build/libs/portfoliomaker-0.0.1-SNAPSHOT.jar app.jar
+# Copia os arquivos do projeto para o container
+COPY . .
 
-# Expõe a porta que a aplicação Spring Boot usa
+# Executa o build do JAR sem rodar testes
+RUN gradle build -x test
+
+# Etapa 2: Runtime
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copia o JAR gerado da etapa anterior
+COPY --from=builder /app/build/libs/*.jar app.jar
+
+# Expõe a porta padrão do Spring Boot
 EXPOSE 8080
 
-# Comando para executar a aplicação
+# Comando para iniciar a aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
