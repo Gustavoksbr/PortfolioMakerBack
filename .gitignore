@@ -37,6 +37,4 @@ out/
 ### VS Code ###
 .vscode/
 
-*.key.priv
-*.key.pub
 *.env
