@@ -1,6 +1,6 @@
 # 📌 PortfolioMakerBack
 
-API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **MongoDB** como banco de dados, autenticação via **JWT** e documentação interativa através do **Swagger**.
+API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **MongoDB** como banco de dados e autenticação via **JWT**
 
 Cada usuário pode criar **um único portfólio**, contendo informações como descrição, habilidades, projetos, experiências e links.
 
@@ -16,9 +16,6 @@ Antes de rodar o projeto, instale os seguintes componentes:
 
 - [Java 17+](https://adoptium.net/)
 - [MongoDB](https://www.mongodb.com/try/download/community) rodando em `localhost:27017`
-- [Git](https://git-scm.com/)
-- [Git Bash](https://gitforwindows.org/) (necessário para gerar chaves no Windows)
-
 ---
 
 ## 📂 Clonando o projeto
@@ -106,6 +103,6 @@ O servidor será iniciado em: [http://localhost:8080](http://localhost:8080)
 
 ## 📜 Documentação da API
 
-👉 [https://portfoliomaker-elfz.onrender.com/swagger-ui/index.html](https://portfoliomaker-elfz.onrender.com/swagger-ui/index.html)
+👉 https://portfoliomakerback.onrender.com/swagger-ui/index.html
 
 ---

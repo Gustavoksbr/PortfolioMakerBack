@@ -1,6 +1,7 @@
 package com.gustavoksbr.portfoliomaker.controller;
 
 import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.*;
+import com.mongodb.MongoException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -10,6 +11,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.oauth2.jwt.BadJwtException;
 import org.springframework.security.oauth2.jwt.JwtValidationException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -77,14 +79,24 @@ public class ExceptionsController {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    // ====================================================================================================
-    // 500
+    //405
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<String> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Método HTTP não permitido para esta URL.");
+    }
+//
+//    // ====================================================================================================
+//    // 500
     @ExceptionHandler
     public ResponseEntity<String> handleException(Exception ex) {
         System.out.println("Erro 500: "+ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro interno no servidor.");
     }
 
+    @ExceptionHandler(MongoException.class)
+    public ResponseEntity<String> handleMongoException(MongoException ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro no acesso ao banco de dados.");
+    }
 
     // usuario
 
@@ -134,6 +146,7 @@ public class ExceptionsController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token expirado. Logue-se novamente.");
     }
 
+    //409
     @ExceptionHandler(EmailJaExiste.class)
     public ResponseEntity<String> handleEmailJaExiste(EmailJaExiste ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
