@@ -4,9 +4,9 @@ API desenvolvida em **Spring Boot** para gerenciamento de portfólios, com **Mon
 
 Cada usuário pode criar **um único portfólio**, contendo informações como descrição, habilidades, projetos, experiências e links.
 
-Veja a aplicação completa hospedada [aqui](https://gustavoksbr-portfolio-maker.vercel.app).
+Veja a aplicação completa hospedada: https://gustavoksbr-portfolio-maker.vercel.app
 
-Veja o código do Front-End [aqui](https://github.com/Gustavoksbr/PortfolioMakerFront)
+Veja o código do Front-End: https://github.com/Gustavoksbr/PortfolioMakerFront
 
 ---
 
@@ -14,8 +14,8 @@ Veja o código do Front-End [aqui](https://github.com/Gustavoksbr/PortfolioMaker
 
 Antes de rodar o projeto, instale os seguintes componentes:
 
-- [Java 17+](https://adoptium.net/)
-- [MongoDB](https://www.mongodb.com/try/download/community) rodando em `localhost:27017`
+- Java 17+
+- MongoDB
 ---
 
 ## 📂 Clonando o projeto
@@ -72,7 +72,7 @@ Você pode escolher entre dois modos de envio:
 
 ### 1. JavaMail (SMTP)
 
-- Recomendado para testes locais
+- Recomendado para testes locais, por ser mais simples de configurar
 - Você precisará de uma conta de e-mail como Gmail, Outlook, etc. (Caso use Gmail, crie uma senha de app. Veja este Guia rápido para configurar no Gmail: https://youtu.be/_MwdIaMy_Ao?si=_O3NVEdCDNSwwh1u)
 - Configure as variáveis de ambiente no `.env` no seu ambiente:
 ```
@@ -94,7 +94,7 @@ spring.profiles.active=javamail
 ```
 ### 2. Make
 
-- Recomendado para produção (hospedagem na nuvem)
+- Recomendado para produção, por ser mais complexo, porém robusto e confiável
 - Crie uma conta gratuita na Make (https://www.make.com/)
 - Crie um cenário. Nele, adicione o um webhook (módulo "Custom webhook") e conecte-o a um módulo de envio de e-mail (Gmail, Outlook, etc). Se escolheu Gmail. recomendo esse vídeo para configurar: https://youtu.be/yIr2IDM5yPY?si=5pneZM83cYb9W6EE
 - Copie a URL do webhook gerado. Clique em "redetermine data structure" e teste a url utilizando algum serviço de requisições HTTP (Postman, Insomnia, Httpie, etc). Utilize método POST e envie um JSON nesse formato:
@@ -133,11 +133,5 @@ Ou, se as variáveis estiverem no `application.properties`:
 ```
 
 O servidor será iniciado em: [http://localhost:8080](http://localhost:8080)
-
----
-
-## 📜 Documentação da API
-
-👉 https://portfoliomakerback.onrender.com/swagger-ui/index.html
 
 ---
