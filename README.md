@@ -48,39 +48,74 @@ jwt.secret=${PORTFOLIO_JWT_SECRET}
 server.port=8080
 server.error.include-stacktrace=never
 
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-
-spring.mail.host=${PORTFOLIO_EMAIL_HOST}
-spring.mail.port=${PORTFOLIO_EMAIL_PORT}
-spring.mail.username=${PORTFOLIO_EMAIL}
-spring.mail.password=${PORTFOLIO_EMAIL_PASSWORD}
+cors.allowed-origins=${CORS_ALLOWED_ORIGINS}
 ````
 Exemplo de `.env`:
 
-````env
+````dotenv
 PORTFOLIO_MONGODB_URI=mongodb://localhost:27017
-PORTFOLIO_EMAIL_HOST=smtp.gmail.com
-PORTFOLIO_EMAIL_PORT=587
-PORTFOLIO_EMAIL=seu-email@gmail.com
-PORTFOLIO_EMAIL_PASSWORD=sua-senha-ou-app-password
+CORS_ALLOWED_ORIGINS=https://seu-dominio-front-end.com,http://localhost:3000,http://localhost:4200
 PORTFOLIO_JWT_SECRET=string-qualquer-com-no-minimo-32-caracteres
+MAKE_API=https://sua-api-make-para-envio-de-emails.com
 ````
 👉 Para conexão local com o MongoDB, defina:
 ```
 PORTFOLIO_MONGODB_URI=mongodb://localhost:27017
 ```
-
 ---
 
 ## 📧 Configuração de envio de e-mails
 
 O sistema envia e-mails para **recuperação de senha**.
 
+Você pode escolher entre dois modos de envio:
 
+### 1. JavaMail (SMTP)
 
-🔗 Guia rápido para configurar no Gmail: https://youtu.be/_MwdIaMy_Ao?si=_O3NVEdCDNSwwh1u
+- Recomendado para testes locais
+- Você precisará de uma conta de e-mail como Gmail, Outlook, etc. (Caso use Gmail, crie uma senha de app. Veja este Guia rápido para configurar no Gmail: https://youtu.be/_MwdIaMy_Ao?si=_O3NVEdCDNSwwh1u)
+- Configure as variáveis de ambiente no `.env` no seu ambiente:
+```
+PORTFOLIO_EMAIL_HOST=smtp.gmail.com
+PORTFOLIO_EMAIL_PORT=587
+PORTFOLIO_EMAIL=seuemail@gmail.com
+PORTFOLIO_EMAIL_PASSWORD=sua_senha_de_app
+```
+- E deixe seu aplication.properties assim:
 
+```properties
+spring.mail.host=${PORTFOLIO_EMAIL_HOST}
+spring.mail.port=${PORTFOLIO_EMAIL_PORT}
+spring.mail.username=${PORTFOLIO_EMAIL}
+spring.mail.password=${PORTFOLIO_EMAIL_PASSWORD}
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.profiles.active=javamail
+```
+### 2. Make
+
+- Recomendado para produção (hospedagem na nuvem)
+- Crie uma conta gratuita na Make (https://www.make.com/)
+- Crie um cenário. Nele, adicione o um webhook (módulo "Custom webhook") e conecte-o a um módulo de envio de e-mail (Gmail, Outlook, etc). Se escolheu Gmail. recomendo esse vídeo para configurar: https://youtu.be/yIr2IDM5yPY?si=5pneZM83cYb9W6EE
+- Copie a URL do webhook gerado. Clique em "redetermine data structure" e teste a url utilizando algum serviço de requisições HTTP (Postman, Insomnia, Httpie, etc). Utilize método POST e envie um JSON nesse formato:
+```json
+{
+  "to": "emailteste@email.com",
+  "subject": "Teste Make",
+  "body": "Olá, este é um teste"
+}
+```
+- Isto irá salvar o formato do JSON no webhook, que ficará aparecendo como opção de preenchimento no módulo de envio de e-mail
+- Cole a url no seu `.env`:
+```dotenv
+MAKE_API=sua_url_secreta_da_make
+```
+- E deixe seu aplication.properties assim:
+
+```properties
+make.api=${MAKE_API}
+spring.profiles.active=make
+```
 ---
 
 ## ▶️ Executando o projeto
