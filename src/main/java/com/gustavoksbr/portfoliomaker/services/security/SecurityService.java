@@ -86,8 +86,8 @@ public class SecurityService{
         this.esqueciSenhaCodes.put(email, esqueciSenhaCode);
         this.emailService.sendEmail(Email.builder()
                 .to(email)
-                .subject("Código de recuperação de senha")
-                .body("Código de recuperação de senha: " + esqueciSenhaCode)
+                .subject("Recuperação de senha")
+                .body("Código de recuperação de senha de PortfolioMaker: " + esqueciSenhaCode)
                 .build());
     }
 
