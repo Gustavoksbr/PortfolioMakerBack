@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
@@ -12,12 +13,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 @Profile("javamail")
 public class JavaMailEmailService implements EmailService {
-    private final JavaMailSender javaMailSender;
-
-    @Autowired
-    public JavaMailEmailService(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
+    private final JavaMailSender javaMailSender = new JavaMailSenderImpl();
 
     @Override
     public void sendEmail(Email email) {

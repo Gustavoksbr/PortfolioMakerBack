@@ -49,7 +49,6 @@ public class SecurityService{
     }
 
     public String getEmail(String token) {
-
         return jwtService.getEmail(token);
     }
 
