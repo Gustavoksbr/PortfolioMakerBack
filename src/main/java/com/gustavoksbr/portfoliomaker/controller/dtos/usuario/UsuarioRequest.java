@@ -18,7 +18,7 @@ public class UsuarioRequest {
     @Email
     private String email;
     @NotBlank
-    @Size(min = 3)
+    @Size(min = 3, max = 64)
     private String senha;
 
     public Usuario toDomain() {
