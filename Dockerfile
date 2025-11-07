@@ -11,7 +11,8 @@ COPY . .
 RUN gradle build -x test
 
 # Etapa 2: Runtime
-FROM openjdk:17-jdk-slim
+#FROM openjdk:17.0.1-jdk-slim
+FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
