@@ -1,6 +1,6 @@
 package com.gustavoksbr.portfoliomaker.controller;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.*;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.*;
 import com.mongodb.MongoException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -14,14 +14,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestControllerAdvice
 public class ExceptionsController {

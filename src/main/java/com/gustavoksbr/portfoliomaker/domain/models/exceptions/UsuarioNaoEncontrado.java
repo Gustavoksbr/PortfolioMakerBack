@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos.exceptions;
+package com.gustavoksbr.portfoliomaker.domain.models.exceptions;
 
 public class UsuarioNaoEncontrado  extends RuntimeException {
     public UsuarioNaoEncontrado(String username) {

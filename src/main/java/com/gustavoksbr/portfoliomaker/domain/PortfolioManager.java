@@ -1,8 +1,8 @@
 package com.gustavoksbr.portfoliomaker.domain;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Portfolio;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.Erro404;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.Erro409;
+import com.gustavoksbr.portfoliomaker.domain.models.Portfolio;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.Erro404;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.Erro409;
 import com.gustavoksbr.portfoliomaker.services.repository.portfolio.PortfolioRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

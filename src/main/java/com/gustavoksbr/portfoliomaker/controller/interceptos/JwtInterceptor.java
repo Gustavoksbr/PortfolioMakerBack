@@ -1,7 +1,7 @@
 package com.gustavoksbr.portfoliomaker.controller.interceptos;
 
 import com.gustavoksbr.portfoliomaker.domain.UsuarioManager;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.ErroDeAutenticacaoGeral;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.ErroDeAutenticacaoGeral;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

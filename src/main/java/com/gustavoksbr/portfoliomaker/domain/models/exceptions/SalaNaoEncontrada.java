@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos.exceptions;
+package com.gustavoksbr.portfoliomaker.domain.models.exceptions;
 
 public class SalaNaoEncontrada extends RuntimeException {
     public SalaNaoEncontrada(String nome, String dono) {

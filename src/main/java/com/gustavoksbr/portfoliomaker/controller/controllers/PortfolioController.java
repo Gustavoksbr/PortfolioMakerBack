@@ -3,16 +3,14 @@ package com.gustavoksbr.portfoliomaker.controller.controllers;
 import com.gustavoksbr.portfoliomaker.controller.dtos.portfolio.PortfolioRequest;
 import com.gustavoksbr.portfoliomaker.domain.PortfolioManager;
 import com.gustavoksbr.portfoliomaker.domain.UsuarioManager;
-import com.gustavoksbr.portfoliomaker.domain.dtos.Portfolio;
+import com.gustavoksbr.portfoliomaker.domain.models.Portfolio;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

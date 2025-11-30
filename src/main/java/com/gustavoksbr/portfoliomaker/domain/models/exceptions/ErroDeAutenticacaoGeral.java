@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos.exceptions;
+package com.gustavoksbr.portfoliomaker.domain.models.exceptions;
 
 public class ErroDeAutenticacaoGeral extends RuntimeException {
     public ErroDeAutenticacaoGeral(String message) {

@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos.exceptions;
+package com.gustavoksbr.portfoliomaker.domain.models.exceptions;
 
 public class ErroDeRequisicaoGeral extends RuntimeException {
     public ErroDeRequisicaoGeral(String message) {

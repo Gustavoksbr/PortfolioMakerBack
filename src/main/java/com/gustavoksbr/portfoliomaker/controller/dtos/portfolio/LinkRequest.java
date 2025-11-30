@@ -1,6 +1,6 @@
 package com.gustavoksbr.portfoliomaker.controller.dtos.portfolio;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Link;
+import com.gustavoksbr.portfoliomaker.domain.models.Link;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

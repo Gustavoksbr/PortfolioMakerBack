@@ -1,9 +1,9 @@
 package com.gustavoksbr.portfoliomaker.services.security;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Email;
-import com.gustavoksbr.portfoliomaker.domain.dtos.Usuario;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.ErroDeRequisicaoGeral;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.SenhaIncorretaException;
+import com.gustavoksbr.portfoliomaker.domain.models.Email;
+import com.gustavoksbr.portfoliomaker.domain.models.Usuario;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.ErroDeRequisicaoGeral;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.SenhaIncorretaException;
 import com.gustavoksbr.portfoliomaker.services.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

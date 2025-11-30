@@ -1,7 +1,7 @@
 package com.gustavoksbr.portfoliomaker.domain;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.JwtResponse;
-import com.gustavoksbr.portfoliomaker.domain.dtos.Usuario;
+import com.gustavoksbr.portfoliomaker.domain.models.JwtResponse;
+import com.gustavoksbr.portfoliomaker.domain.models.Usuario;
 import com.gustavoksbr.portfoliomaker.services.repository.usuario.UsuarioRepository;
 import com.gustavoksbr.portfoliomaker.services.security.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;

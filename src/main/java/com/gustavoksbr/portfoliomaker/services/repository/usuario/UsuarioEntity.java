@@ -1,6 +1,6 @@
 package com.gustavoksbr.portfoliomaker.services.repository.usuario;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Usuario;
+import com.gustavoksbr.portfoliomaker.domain.models.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

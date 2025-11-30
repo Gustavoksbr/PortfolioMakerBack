@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos;
+package com.gustavoksbr.portfoliomaker.domain.models;
 
 import lombok.Data;
 

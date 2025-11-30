@@ -1,7 +1,6 @@
 package com.gustavoksbr.portfoliomaker.services.email;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Email;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gustavoksbr.portfoliomaker.domain.models.Email;
 import org.springframework.context.annotation.Profile;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

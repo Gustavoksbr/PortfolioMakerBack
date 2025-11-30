@@ -1,7 +1,7 @@
 package com.gustavoksbr.portfoliomaker.controller.dtos.portfolio;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.*;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.ErroDeRequisicaoGeral;
+import com.gustavoksbr.portfoliomaker.domain.models.*;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.ErroDeRequisicaoGeral;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -10,9 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.*;
 
 @Data

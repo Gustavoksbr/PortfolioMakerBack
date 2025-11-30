@@ -10,27 +10,17 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/ping")
 public class PingController {
     @GetMapping
-    public String ping() {
-        var now = System.currentTimeMillis();
-        System.out.println("Alguém pingou: "+now);
-        return "teste - " + System.currentTimeMillis();
+    public void ping() {
     }
-
     private final RestTemplate restTemplate = new RestTemplate();
-
-    // http://localhost:8080/ping
-    // https://portfoliomakerback.onrender.com/ping
-
     private static final String SELF_URL = "https://portfoliomakerback.onrender.com/ping";
-
-    // A cada 10 minutos (10 * 60 * 1000 ms)
     @Scheduled(fixedRate = 10 * 60 * 1000)
-    public void scheduledHello() {
-        try {
-            String response = restTemplate.getForObject(SELF_URL, String.class);
-            System.out.println("Auto-Ping OK: " + response);
-        } catch (Exception e) {
-            System.err.println("Erro ao pingar a si mesmo: " + e.getMessage());
-        }
+    public void scheduledParaDeixarARenderAtivadaSempre() {
+            restTemplate.getForObject(SELF_URL, String.class);
     }
 }
+
+
+
+// http://localhost:8080/ping
+// https://portfoliomakerback.onrender.com/ping

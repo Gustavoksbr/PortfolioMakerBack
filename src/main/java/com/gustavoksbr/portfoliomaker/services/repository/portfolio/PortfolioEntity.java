@@ -1,6 +1,6 @@
 package com.gustavoksbr.portfoliomaker.services.repository.portfolio;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.*;
+import com.gustavoksbr.portfoliomaker.domain.models.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 

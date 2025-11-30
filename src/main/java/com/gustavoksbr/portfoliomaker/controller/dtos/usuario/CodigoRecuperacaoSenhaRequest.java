@@ -16,7 +16,7 @@ public class CodigoRecuperacaoSenhaRequest {
     @NotBlank
     private String codigo;
     @NotBlank
-    @Size(min = 3)
+    @Size(min = 3, max = 64)
     private String novaSenha;
 
 }

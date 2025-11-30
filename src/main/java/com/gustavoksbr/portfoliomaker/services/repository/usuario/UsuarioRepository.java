@@ -1,8 +1,8 @@
 package com.gustavoksbr.portfoliomaker.services.repository.usuario;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Usuario;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.EmailJaExiste;
-import com.gustavoksbr.portfoliomaker.domain.dtos.exceptions.UsuarioNaoEncontrado;
+import com.gustavoksbr.portfoliomaker.domain.models.Usuario;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.EmailJaExiste;
+import com.gustavoksbr.portfoliomaker.domain.models.exceptions.UsuarioNaoEncontrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

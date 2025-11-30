@@ -1,4 +1,4 @@
-package com.gustavoksbr.portfoliomaker.domain.dtos.exceptions;
+package com.gustavoksbr.portfoliomaker.domain.models.exceptions;
 
 public class SalaJaExiste extends RuntimeException {
     public SalaJaExiste(String nome) {

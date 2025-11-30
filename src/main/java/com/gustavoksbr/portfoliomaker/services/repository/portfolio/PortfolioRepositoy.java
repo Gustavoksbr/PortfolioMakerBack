@@ -1,9 +1,8 @@
 package com.gustavoksbr.portfoliomaker.services.repository.portfolio;
 
-import com.gustavoksbr.portfoliomaker.domain.dtos.Portfolio;
+import com.gustavoksbr.portfoliomaker.domain.models.Portfolio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
